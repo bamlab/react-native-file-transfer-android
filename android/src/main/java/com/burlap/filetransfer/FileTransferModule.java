@@ -71,6 +71,7 @@ public class FileTransferModule extends ReactContextBaseJavaModule {
       String url = options.getString("uploadUrl");
       String mimeType = options.getString("mimeType");
       String fileName = options.getString("fileName");
+      String fileKey = options.getString("key");
       ReadableMap headers = options.getMap("headers");
       ReadableMap data = options.getMap("data");
 
@@ -80,7 +81,7 @@ public class FileTransferModule extends ReactContextBaseJavaModule {
                 .type(MultipartBuilder.FORM)
                 .addPart(
                         Headers.of("Content-Disposition",
-                                "form-data; name=\"file\"; filename=\"" + fileName + "\""
+                                "form-data; name=\"" + fileKey + "\"; filename=\"" + fileName + "\""
                         ),
                         RequestBody.create(mediaType, file)
                 )
